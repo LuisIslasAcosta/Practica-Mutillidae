@@ -65,7 +65,7 @@
                         if ($allowedPath !== false && strpos($allowedPath, $hintsDir) === 0) {
                             include_once $allowedPath;
                         } else {
-                            echo "Invalid file pat.";
+                            echo "Invalid file path.";
                         }
                     ?>
                 </td>

@@ -13,7 +13,7 @@
     /* ------------------------------------------
     * initialize custom error handler
     * ------------------------------------------ */
-    require_once '../classes/CustomErrorHandler.ph';
+    require_once '../classes/CustomErrorHandler.php';
     $CustomErrorHandler = new CustomErrorHandler($_SESSION["security-level"]);
 
     try {
