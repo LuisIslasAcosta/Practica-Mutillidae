@@ -406,7 +406,7 @@
 			if ($allowedPath !== false && strpos($allowedPath, $baseDir) === 0 && file_exists($allowedPath)) {
 				require_once $allowedPath;
 			} else {
-				require_once __SITE_ROOT__."/page-not-found.php";
+				require_once __SITE_ROOT__."/page-not-foun.php";
 			}
 
    		break;
