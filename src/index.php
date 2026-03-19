@@ -392,10 +392,23 @@
 		    	$lPage = $_GET["page"];
 		    }// end if
 
-   			$lPageIsAllowed = (preg_match("/^[a-zA-Z0-9\.\-\/]+[\.php|\.html]$/", $lPage) == 1);
-   			if (!$lPageIsAllowed){
-		    	$lPage = __SITE_ROOT__.'/page-not-found.php';
-   			}// end if
+   			if (isset($_GET["page"])) {
+				$lPage = $_GET["page"];
+			}
+
+			$lPageIsAllowed = (preg_match("/^[a-zA-Z0-9\.\-\/]+(\.php|\.html)$/", $lPage) === 1);
+			if (!$lPageIsAllowed){
+				$lPage = __SITE_ROOT__.'/page-not-found.php';
+			}
+
+			$allowedPath = realpath(__SITE_ROOT__ . '/' . $lPage);
+			$baseDir = realpath(__SITE_ROOT__);
+			if ($allowedPath !== false && strpos($allowedPath, $baseDir) === 0 && file_exists($allowedPath)) {
+				require_once $allowedPath;
+			} else {
+				require_once __SITE_ROOT__."/page-not-found.php";
+			}
+
    		break;
    	}// end switch
 	/* ------------------------------------------
